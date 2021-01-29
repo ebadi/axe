@@ -11,7 +11,8 @@ import xml.etree.ElementTree as et
 # import logging
 
 from .shared import ELSTART, log
-from .gui import Gui
+from .gui_qt import Gui
+
 TITEL = "Albert's (Simple) XML editor"
 NEW_ROOT = '(new root)'
 
