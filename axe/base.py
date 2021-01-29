@@ -10,10 +10,10 @@ import shutil
 import xml.etree.ElementTree as et
 # import logging
 
-from .shared import ELSTART, log
-from .gui_qt import Gui
+from shared import ELSTART, log
+from gui_qt import Gui
 
-TITEL = "Albert's (Simple) XML editor"
+TITEL = "OpenScenario editor"
 NEW_ROOT = '(new root)'
 
 

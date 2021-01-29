@@ -6,13 +6,23 @@ import sys
 import PyQt5.QtWidgets as qtw
 import PyQt5.QtGui as gui
 import PyQt5.QtCore as core
-from .shared import ELSTART, axe_iconame, log
+from shared import ELSTART, iconame, log
+from PyQt5 import uic
 if os.name == "nt":
     HMASK = "XML files (*.xml);;All files (*.*)"
 elif os.name == "posix":
     HMASK = "XML files (*.xml *.XML);;All files (*.*)"
 IMASK = "All files (*.*)"
 
+
+
+
+
+from PyQt5.QtWidgets import QApplication, QWidget, QMainWindow, QLabel
+from PyQt5.QtWidgets import (QWidget, QPushButton,
+                             QHBoxLayout, QVBoxLayout, QApplication)
+                             
+        
 
 def calculate_location(win, node):
     """attempt to calculate some kind of identification for a tree node
@@ -399,7 +409,8 @@ class VisualTree(qtw.QTreeWidget):
                     ## if item.childCount() > 0:
                         ## edit = False
         if edit:
-            self.parent.edit()
+            # self.parent.edit()
+            pass
         else:
             event.ignore()
 
@@ -957,7 +968,8 @@ class Gui(qtw.QMainWindow):
         """
         ## self.parent = parent
         ## qtw.QMainWindow.__init__(self, parent) # aparte initialisatie net als voor mixin
-        self._icon = gui.QIcon(axe_iconame)
+        self._icon = gui.QIcon(iconame)
+        #uic.loadUi("untitled.ui", self)
         self.resize(620, 900)
         self.setWindowIcon(self._icon)
 
@@ -968,7 +980,21 @@ class Gui(qtw.QMainWindow):
 
         self.tree = VisualTree(self)
         self.tree.headerItem().setHidden(True)
-        self.setCentralWidget(self.tree)
+        self.tree.setFixedWidth(280)
+        self.ui = uic.loadUi('untitled.ui')
+        
+
+        layout = QHBoxLayout()
+        #layout.addWidget(QPushButton("Left-Most"))
+
+        layout.addWidget(self.tree)
+        layout.addWidget(self.ui)
+        widget = QWidget()
+        widget.setLayout(layout)
+        self.setCentralWidget(widget)
+        
+        
+        #self.setCentralWidget(self.tree)
         self.enable_pasteitems(False)
         self.undo_stack = UndoRedoStack(self)
         self.editor.mark_dirty(False)

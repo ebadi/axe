@@ -5,15 +5,12 @@ XMLEdit GUI-onafhankelijke code
 
 import os
 import pathlib
-## import sys
-# import shutil
-## import copy
 import logging
 
 # from axe.gui import Gui
 
 ELSTART = '<>'
-axe_iconame = str(pathlib.Path(__file__).parent / "axe.ico")
+iconame = str(pathlib.Path(__file__).parent / "icon.ico")
 # always log in program directory
 LOGFILE = pathlib.Path('/tmp/logs/axe_qt.log')
 LOGPLEASE = 'DEBUG' in os.environ and os.environ["DEBUG"] != "0"
